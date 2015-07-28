@@ -109,6 +109,7 @@
       <LastGenOutput>workouts.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <Content Include="404.aspx" />
+    <Content Include="admin\adWorkout.aspx" />
     <Content Include="App_Readme\Elmah.txt" />
     <Content Include="images\asc.jpg" />
     <Content Include="images\desc.jpg" />
@@ -167,6 +168,13 @@
     </Compile>
     <Compile Include="admin\addWorkout.aspx.designer.cs">
       <DependentUpon>addWorkout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\adWorkout.aspx.cs">
+      <DependentUpon>adWorkout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\adWorkout.aspx.designer.cs">
+      <DependentUpon>adWorkout.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\mainMenu.aspx.cs">
       <DependentUpon>mainMenu.aspx</DependentUpon>
