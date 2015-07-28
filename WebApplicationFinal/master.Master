@@ -33,7 +33,7 @@
             <asp:PlaceHolder ID="plhPrivate" runat="server">
                 <li><a href="/admin/mainMenu.aspx">Main Menu</a></li>
                 <li><a href="/admin/workouts.aspx">Workouts</a></li>
-                <li><a href="/admin/Addworkout.aspx">Add Workout</a></li>
+                <li><a href="/admin/addWorkout.aspx">Add Workout</a></li>
                 <li><a href="/logout.aspx">Log Out</a></li>
             </asp:PlaceHolder>
         </ul>
