@@ -50,7 +50,7 @@
         <asp:TextBox ID="txtWorkoutDate" runat="server" required TextMode="Date" />
         <asp:RangeValidator ID="RangeValidator1" runat="server" ErrorMessage="Must be a Date"
             ControlToValidate="txtWorkoutDate" CssClass="alert alert-danger"
-            Type="Date" MinimumValue="2000-01-01" MaximumValue="31/12/2999"></asp:RangeValidator>
+            Type="Date"></asp:RangeValidator>
     </fieldset><br />
 
     <!--Save the workout the user entered-->
