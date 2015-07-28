@@ -45,7 +45,7 @@
             CssClass="alert alert-danger" ></asp:CompareValidator>
     </fieldset>
 
-    <fieldset>
+  <fieldset>
         <label for="txtWorkoutDate" class="col-sm-2">Workout Date:</label>
         <asp:TextBox ID="txtWorkoutDate" runat="server" required TextMode="Date" />
         <asp:RangeValidator ID="RangeValidator1" runat="server" ErrorMessage="Must be a Date"
