@@ -31,6 +31,33 @@ namespace WebApplicationFinal.admin {
         protected global::System.Web.UI.WebControls.TextBox txtBodyPart;
         
         /// <summary>
+        /// txtIntensity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtIntensity;
+        
+        /// <summary>
+        /// txtReps control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtReps;
+        
+        /// <summary>
+        /// repsValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator repsValidator;
+        
+        /// <summary>
         /// btnSave control.
         /// </summary>
         /// <remarks>

@@ -22,6 +22,21 @@
              ErrorMessage="No Numbers Allowed" ValidationExpression="^[a-zA-Z'.\s]{1,40}$" CssClass="alert alert-danger"  ></asp:RegularExpressionValidator>
     </fieldset>
 
+    <fieldset>
+        <label for="txtIntensity" class="col-sm-2">Intensity:</label>
+        <asp:TextBox ID="txtIntensity" runat="server" required MaxLength="50" />
+        <asp:RegularExpressionValidator runat="server" ControlToValidate="txtIntensity"
+             ErrorMessage="No Numbers Allowed" ValidationExpression="^[a-zA-Z'.\s]{1,40}$" CssClass="alert alert-danger"  ></asp:RegularExpressionValidator>
+    </fieldset>
+
+    <fieldset>
+        <label for="txtReps" class="col-sm-2">Reps:</label>
+        <asp:TextBox ID="txtReps" runat="server" required MaxLength="50"  />
+        <asp:CompareValidator ID="repsValidator" runat="server" ControlToValidate="txtReps"
+             Type="Integer" Operator="DataTypeCheck" ErrorMessage="Must Be A Number"
+            CssClass="alert alert-danger" ></asp:CompareValidator>
+    </fieldset>
+
     
 
     <!--Save the workout the user entered-->
