@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="workoutModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Exercises">
+          <Key>
+            <PropertyRef Name="ExerciseID" />
+          </Key>
+          <Property Name="ExerciseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Reps" Type="int" Nullable="false" />
+          <Property Name="Setts" Type="int" Nullable="false" />
+          <Property Name="ExerciseTypeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExerciseTypes">
+          <Key>
+            <PropertyRef Name="ExerciseTypeID" />
+          </Key>
+          <Property Name="ExerciseTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Bodypart" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Links">
+          <Key>
+            <PropertyRef Name="LinkID" />
+          </Key>
+          <Property Name="LinkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExerciseID" Type="int" Nullable="false" />
+          <Property Name="WorkoutID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Workouts">
+          <Key>
+            <PropertyRef Name="WorkoutID" />
+          </Key>
+          <Property Name="WorkoutID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BodyPart" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Intensity" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Reps" Type="int" Nullable="false" />
+          <Property Name="Setts" Type="int" Nullable="false" />
+          <Property Name="WorkoutDate" Type="date" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Exercises_ExerciseTypeID">
+          <End Role="ExerciseTypes" Type="Self.ExerciseTypes" Multiplicity="1" />
+          <End Role="Exercises" Type="Self.Exercises" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExerciseTypes">
+              <PropertyRef Name="ExerciseTypeID" />
+            </Principal>
+            <Dependent Role="Exercises">
+              <PropertyRef Name="ExerciseTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Links_ExerciseID">
+          <End Role="Exercises" Type="Self.Exercises" Multiplicity="1" />
+          <End Role="Links" Type="Self.Links" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercises">
+              <PropertyRef Name="ExerciseID" />
+            </Principal>
+            <Dependent Role="Links">
+              <PropertyRef Name="ExerciseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Links_WorkoutID">
+          <End Role="Workouts" Type="Self.Workouts" Multiplicity="1" />
+          <End Role="Links" Type="Self.Links" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workouts">
+              <PropertyRef Name="WorkoutID" />
+            </Principal>
+            <Dependent Role="Links">
+              <PropertyRef Name="WorkoutID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="workoutModelStoreContainer">
+          <EntitySet Name="Exercises" EntityType="Self.Exercises" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExerciseTypes" EntityType="Self.ExerciseTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Links" EntityType="Self.Links" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Workouts" EntityType="Self.Workouts" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Exercises_ExerciseTypeID" Association="Self.FK_Exercises_ExerciseTypeID">
+            <End Role="ExerciseTypes" EntitySet="ExerciseTypes" />
+            <End Role="Exercises" EntitySet="Exercises" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Links_ExerciseID" Association="Self.FK_Links_ExerciseID">
+            <End Role="Exercises" EntitySet="Exercises" />
+            <End Role="Links" EntitySet="Links" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Links_WorkoutID" Association="Self.FK_Links_WorkoutID">
+            <End Role="Workouts" EntitySet="Workouts" />
+            <End Role="Links" EntitySet="Links" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="workoutModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Exercise">
+          <Key>
+            <PropertyRef Name="ExerciseID" />
+          </Key>
+          <Property Name="ExerciseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Reps" Type="Int32" Nullable="false" />
+          <Property Name="Setts" Type="Int32" Nullable="false" />
+          <Property Name="ExerciseTypeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ExerciseType" Relationship="Self.FK_Exercises_ExerciseTypeID" FromRole="Exercises" ToRole="ExerciseTypes" />
+          <NavigationProperty Name="Links" Relationship="Self.FK_Links_ExerciseID" FromRole="Exercises" ToRole="Links" />
+        </EntityType>
+        <EntityType Name="ExerciseType">
+          <Key>
+            <PropertyRef Name="ExerciseTypeID" />
+          </Key>
+          <Property Name="ExerciseTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Bodypart" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Exercises" Relationship="Self.FK_Exercises_ExerciseTypeID" FromRole="ExerciseTypes" ToRole="Exercises" />
+        </EntityType>
+        <EntityType Name="Link">
+          <Key>
+            <PropertyRef Name="LinkID" />
+          </Key>
+          <Property Name="LinkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExerciseID" Type="Int32" Nullable="false" />
+          <Property Name="WorkoutID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Exercise" Relationship="Self.FK_Links_ExerciseID" FromRole="Links" ToRole="Exercises" />
+          <NavigationProperty Name="Workout" Relationship="Self.FK_Links_WorkoutID" FromRole="Links" ToRole="Workouts" />
+        </EntityType>
+        <EntityType Name="Workout">
+          <Key>
+            <PropertyRef Name="WorkoutID" />
+          </Key>
+          <Property Name="WorkoutID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BodyPart" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Intensity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Reps" Type="Int32" Nullable="false" />
+          <Property Name="Setts" Type="Int32" Nullable="false" />
+          <Property Name="WorkoutDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Links" Relationship="Self.FK_Links_WorkoutID" FromRole="Workouts" ToRole="Links" />
+        </EntityType>
+        <Association Name="FK_Exercises_ExerciseTypeID">
+          <End Role="ExerciseTypes" Type="Self.ExerciseType" Multiplicity="1" />
+          <End Role="Exercises" Type="workoutModel.Exercise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExerciseTypes">
+              <PropertyRef Name="ExerciseTypeID" />
+            </Principal>
+            <Dependent Role="Exercises">
+              <PropertyRef Name="ExerciseTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Links_ExerciseID">
+          <End Role="Exercises" Type="workoutModel.Exercise" Multiplicity="1" />
+          <End Role="Links" Type="Self.Link" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercises">
+              <PropertyRef Name="ExerciseID" />
+            </Principal>
+            <Dependent Role="Links">
+              <PropertyRef Name="ExerciseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Links_WorkoutID">
+          <End Role="Workouts" Type="Self.Workout" Multiplicity="1" />
+          <End Role="Links" Type="Self.Link" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workouts">
+              <PropertyRef Name="WorkoutID" />
+            </Principal>
+            <Dependent Role="Links">
+              <PropertyRef Name="WorkoutID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DefaultConnection" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Exercises" EntityType="workoutModel.Exercise" />
+          <EntitySet Name="ExerciseTypes" EntityType="Self.ExerciseType" />
+          <EntitySet Name="Links" EntityType="Self.Link" />
+          <EntitySet Name="Workouts" EntityType="Self.Workout" />
+          <AssociationSet Name="FK_Exercises_ExerciseTypeID" Association="Self.FK_Exercises_ExerciseTypeID">
+            <End Role="ExerciseTypes" EntitySet="ExerciseTypes" />
+            <End Role="Exercises" EntitySet="Exercises" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Links_ExerciseID" Association="Self.FK_Links_ExerciseID">
+            <End Role="Exercises" EntitySet="Exercises" />
+            <End Role="Links" EntitySet="Links" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Links_WorkoutID" Association="Self.FK_Links_WorkoutID">
+            <End Role="Workouts" EntitySet="Workouts" />
+            <End Role="Links" EntitySet="Links" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="workoutModelStoreContainer" CdmEntityContainer="DefaultConnection">
+          <EntitySetMapping Name="Exercises">
+            <EntityTypeMapping TypeName="workoutModel.Exercise">
+              <MappingFragment StoreEntitySet="Exercises">
+                <ScalarProperty Name="ExerciseID" ColumnName="ExerciseID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Reps" ColumnName="Reps" />
+                <ScalarProperty Name="Setts" ColumnName="Setts" />
+                <ScalarProperty Name="ExerciseTypeID" ColumnName="ExerciseTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExerciseTypes">
+            <EntityTypeMapping TypeName="workoutModel.ExerciseType">
+              <MappingFragment StoreEntitySet="ExerciseTypes">
+                <ScalarProperty Name="ExerciseTypeID" ColumnName="ExerciseTypeID" />
+                <ScalarProperty Name="Bodypart" ColumnName="Bodypart" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Links">
+            <EntityTypeMapping TypeName="workoutModel.Link">
+              <MappingFragment StoreEntitySet="Links">
+                <ScalarProperty Name="LinkID" ColumnName="LinkID" />
+                <ScalarProperty Name="ExerciseID" ColumnName="ExerciseID" />
+                <ScalarProperty Name="WorkoutID" ColumnName="WorkoutID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Workouts">
+            <EntityTypeMapping TypeName="workoutModel.Workout">
+              <MappingFragment StoreEntitySet="Workouts">
+                <ScalarProperty Name="WorkoutID" ColumnName="WorkoutID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="BodyPart" ColumnName="BodyPart" />
+                <ScalarProperty Name="Intensity" ColumnName="Intensity" />
+                <ScalarProperty Name="Reps" ColumnName="Reps" />
+                <ScalarProperty Name="Setts" ColumnName="Setts" />
+                <ScalarProperty Name="WorkoutDate" ColumnName="WorkoutDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

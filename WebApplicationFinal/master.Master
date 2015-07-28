@@ -1,0 +1,85 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="master.master.cs" Inherits="WebApplicationFinal.master" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Workout Tracker</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <!--My Style Sheet-->
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css" />
+
+</head>
+<body>
+    <header class="bg-primary">
+    <!--Navigation links for the website, appears on all pages, in private and public panels-->
+    <nav class="navbar navbar-default">
+        <a href="/default.aspx" class="nav navbar-brand" >Workout Tracker</a>
+        <ul class="nav navbar-nav">
+
+            <asp:PlaceHolder ID="plhPublic" runat="server">
+                <li><a href="/login.aspx">Log In</a></li>
+                <li><a href="/register.aspx">Register</a></li>
+            </asp:PlaceHolder>
+
+            <asp:PlaceHolder ID="plhPrivate" runat="server">
+                <li><a href="/admin/mainMenu.aspx">Main Menu</a></li>
+                <li><a href="/admin/workouts.aspx">Workouts</a></li>
+                <li><a href="/logout.aspx">Log Out</a></li>
+            </asp:PlaceHolder>
+        </ul>
+    </nav>
+    </header>
+
+    <form id="form1" runat="server">
+    <div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+
+    <!--Footer -->
+    <footer class="bg-primary text-center">
+        <p>Share This</p>
+
+        <ul class="share-buttons">
+  <li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Ffinal-100038157.azurewebsites.net&t=Workout%20Tracker" title="Share on Facebook" target="_blank"><img src="/images/Facebook.png"></a></li>
+  <li><a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Ffinal-100038157.azurewebsites.net&text=Workout%20Tracker:%20http%3A%2F%2Ffinal-100038157.azurewebsites.net" target="_blank" title="Tweet"><img src="/images/Twitter.png"></a></li>
+  <li><a href="http://www.tumblr.com/share?v=3&u=http%3A%2F%2Ffinal-100038157.azurewebsites.net&t=Workout%20Tracker&s=" target="_blank" title="Post to Tumblr"><img src="/images/Tumblr.png"></a></li>
+  <li><a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Ffinal-100038157.azurewebsites.net&description=Sign%20Up%20for%20Workout%20Tracker" target="_blank" title="Pin it"><img src="/images/Pinterest.png"></a></li>
+  <li><a href="http://www.reddit.com/submit?url=http%3A%2F%2Ffinal-100038157.azurewebsites.net&title=Workout%20Tracker" target="_blank" title="Submit to Reddit"><img src="/images/Reddit.png"></a></li>
+  <li><a href="mailto:?subject=Workout%20Tracker&body=Sign%20Up%20for%20Workout%20Tracker:%20http%3A%2F%2Ffinal-100038157.azurewebsites.net" target="_blank" title="Email"><img src="/images/Email.png"></a></li>
+</ul>
+
+        @2015 - Workout Tracker
+    </footer>
+
+    <!--jquery CDN -->
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!--Pop Up Confermation when a user deletes a workout -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            jQuery("a").filter(function () {
+                return this.innerHTML.indexOf("Delete") == 0;
+            }).click(function () {
+                return confirm("Are you sure you want to delete this record?");
+            });
+        });
+
+   </script>
+
+</body>
+</html>
