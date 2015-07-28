@@ -13,5 +13,10 @@ namespace WebApplicationFinal.admin
         {
 
         }
+
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
