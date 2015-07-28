@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Add Workout" Language="C#" MasterPageFile="~/master.Master" AutoEventWireup="true" CodeBehind="addWorkout.aspx.cs" Inherits="WebApplicationFinal.admin.addWorkout" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/master.Master" AutoEventWireup="true" CodeBehind="addWorkout.aspx.cs" Inherits="WebApplicationFinal.admin.addWorkout" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

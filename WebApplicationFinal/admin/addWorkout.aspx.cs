@@ -46,7 +46,7 @@ namespace WebApplicationFinal.admin
                         txtIntensity.Text = w.Intensity;
                         txtReps.Text = w.Reps.ToString();
                         txtSetts.Text = w.Setts.ToString();
-                        txtWorkoutDate.Text = w.WorkoutDate.ToString("yyyy-MM-dd");
+                        //txtWorkoutDate.Text = w.WorkoutDate.ToString("yyyy-MM-dd");
                     }
                 }
             }
@@ -89,7 +89,7 @@ namespace WebApplicationFinal.admin
                     w.Reps = Convert.ToInt32(txtReps.Text);
                     w.Setts = Convert.ToInt32(txtSetts.Text);
                     w.Intensity = txtIntensity.Text;
-                    w.WorkoutDate = Convert.ToDateTime(txtWorkoutDate.Text);
+                    //w.WorkoutDate = Convert.ToDateTime(txtWorkoutDate.Text);
 
                     //call add only if we have no workout ID
                     if (WorkoutID == 0)
