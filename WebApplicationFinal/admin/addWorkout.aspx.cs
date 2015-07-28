@@ -55,8 +55,7 @@ namespace WebApplicationFinal.admin
         //Save the workout edit/ add
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            try
-            {
+            
                 //use EF to connect to SQL Server
                 using (DefaultConnectionEF db = new DefaultConnectionEF())
                 {
@@ -98,10 +97,6 @@ namespace WebApplicationFinal.admin
                     Response.Redirect("workouts.aspx");
                 }
             }
-            catch (System.IO.IOException)
-            {
-                Server.Transfer("/error.aspx", true);
-            }
-        }
+        
     }
 }
