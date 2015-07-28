@@ -15,6 +15,13 @@
              ErrorMessage="No Numbers Allowed" ValidationExpression="^[a-zA-Z'.\s]{1,40}$" CssClass="alert alert-danger"  ></asp:RegularExpressionValidator>
     </fieldset>
 
+    <fieldset>
+        <label for="txtBodyPart" class="col-sm-2">Body Part:</label>
+        <asp:TextBox ID="txtBodyPart" runat="server" required MaxLength="50" />
+        <asp:RegularExpressionValidator runat="server" ControlToValidate="txtBodyPart"
+             ErrorMessage="No Numbers Allowed" ValidationExpression="^[a-zA-Z'.\s]{1,40}$" CssClass="alert alert-danger"  ></asp:RegularExpressionValidator>
+    </fieldset>
+
     
 
     <!--Save the workout the user entered-->
