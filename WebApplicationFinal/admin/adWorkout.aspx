@@ -47,7 +47,7 @@
 
   <fieldset>
         <label for="txtWorkoutDate" class="col-sm-2">Workout Date:</label>
-        <asp:TextBox ID="txtWorkoutDate" runat="server" required TextMode="Date" />
+        <asp:TextBox ID="txtWorkoutDate" runat="server" TextMode="Date" />
     </fieldset><br />
 
     <!--Save the workout the user entered-->
