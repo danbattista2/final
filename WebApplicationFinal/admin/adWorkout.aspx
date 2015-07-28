@@ -37,6 +37,14 @@
             CssClass="alert alert-danger" ></asp:CompareValidator>
     </fieldset>
 
+    <fieldset>
+        <label for="txtSetts" class="col-sm-2">Sets:</label>
+        <asp:TextBox ID="txtSetts" runat="server" required MaxLength="50" />
+        <asp:CompareValidator ID="settsValidator" runat="server" ControlToValidate="txtSetts"
+             Type="Integer" Operator="DataTypeCheck" ErrorMessage="Must Be A Number"
+            CssClass="alert alert-danger" ></asp:CompareValidator>
+    </fieldset>
+
     
 
     <!--Save the workout the user entered-->

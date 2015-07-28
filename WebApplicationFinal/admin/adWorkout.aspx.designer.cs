@@ -58,6 +58,24 @@ namespace WebApplicationFinal.admin {
         protected global::System.Web.UI.WebControls.CompareValidator repsValidator;
         
         /// <summary>
+        /// txtSetts control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSetts;
+        
+        /// <summary>
+        /// settsValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator settsValidator;
+        
+        /// <summary>
         /// btnSave control.
         /// </summary>
         /// <remarks>
