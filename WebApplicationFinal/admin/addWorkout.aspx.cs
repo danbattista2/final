@@ -25,8 +25,8 @@ namespace WebApplicationFinal.admin
         //get the current workout selected
         protected void GetWorkout()
         {
-            try
-            {
+            //try
+            //{
                 //populate form with existing workout record
                 Int32 WorkoutID = Convert.ToInt32(Request.QueryString["WorkoutID"]);
 
@@ -49,11 +49,11 @@ namespace WebApplicationFinal.admin
                         txtWorkoutDate.Text = w.WorkoutDate.ToString("yyyy-MM-dd");
                     }
                 }
-            }
-            catch(System.IO.IOException)
-            {
-                Server.Transfer("/error.aspx", true);
-            }
+            //}
+            //catch(System.IO.IOException)
+            //{
+                //Server.Transfer("/error.aspx", true);
+            //}
             
         }
 
@@ -61,8 +61,8 @@ namespace WebApplicationFinal.admin
         //Save the workout edit/ add
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 //use EF to connect to SQL Server
                 using (DefaultConnectionEF db = new DefaultConnectionEF())
                 {
@@ -103,11 +103,11 @@ namespace WebApplicationFinal.admin
                     //redirect to the updated students page
                     Response.Redirect("workouts.aspx");
                 }
-            }
-            catch
-            {
-                Server.Transfer("/error.aspx", true);
-            }
+           // }
+            //catch
+            //{
+               // Server.Transfer("/error.aspx", true);
+            //}
         }
         
     }
